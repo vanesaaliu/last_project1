@@ -1,12 +1,21 @@
 <template>
   <article class="single-article">
     <div class="container">
+      <div class="single-Movie"></div>
       <div class="single-article__image">
         <img :src="'https://image.tmdb.org/t/p/original'+articleImage" :alt="articleImage">
       </div>
+      <div class="single-movie">
       <div class="single-article__content content">
         <div > {{ articleContent }}</div>
       </div>
+      <div class="viti">
+        <div> Release Year: {{ articleDate }}</div>
+      </div>
+      <div class="rating">
+        <div>Rating: {{ articleRating }}</div>
+      </div>
+    </div>
       
     </div>
   </article>
@@ -19,7 +28,8 @@ export default {
   data() {
     return {
       articleContent: '',
-      articleImage: ''
+      articleImage: '',
+      articleRating:''
     }
   },
   methods: {
@@ -30,6 +40,8 @@ export default {
         console.log(data);
         this.articleContent = data.overview;
         this.articleImage = data.poster_path;
+        this.articleRating=data.vote_average;
+        this.articleDate=data.release_date;
       })
     }
   },
@@ -45,10 +57,25 @@ export default {
   padding-bottom: 60px;
   text-align: left;
 }
-
-.single-article__image{
-  float: right;
-  width: 200px;
-  height: 200px;
+.column{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+ 
 }
+.single-article__image{
+  display: flex;
+  justify-content: space-around;
+  
+}
+.rateLogo{
+  width: 15px;
+  height: 15px;
+}
+img {
+    width: 60%;
+    height: 20%;
+  }
 </style>

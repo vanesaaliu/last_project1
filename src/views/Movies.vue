@@ -13,6 +13,7 @@
             :cardImage="news.poster_path"
             :cardDate="news.release_date"
             :cardID="news.id"
+            :cardRating="news.vote_average"
           >
           </CardItem>
         </div>
