@@ -8,6 +8,7 @@
           :cardImage="news.poster_path"
           :cardDate="news.release_date"
           :cardID="news.id"
+          :cardRating="news.vote_average"
         >
         </CardItem>
       </div>
@@ -30,7 +31,7 @@ export default {
   },
   methods : {
     fetchNews() {
-      fetch('https://api.themoviedb.org/3/discover/movie?api_key=54106cb9e32f32a2f6c166158a3062d4&language=en-US&page=1')
+      fetch('https://api.themoviedb.org/3/movie/popular?api_key=0a81e077e4c0f82efa0825b92e9ecee6&language=en-US&page=1')
       .then(response => response.json())
       .then(data => {
         this.newsList = data;
@@ -44,14 +45,15 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
   .card-list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 30px;
     padding-top: 60px;
     padding-bottom: 60px;
   }
+  
   img {
     object-fit:  cover !important;
   }

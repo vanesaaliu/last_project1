@@ -7,6 +7,7 @@
       <div class="single-article__content content">
         <div > {{ articleContent }}</div>
       </div>
+      
     </div>
   </article>
 
@@ -23,12 +24,12 @@ export default {
   },
   methods: {
     fetchSingleNews(newsID) {
-      fetch('https://api.themoviedb.org/3/movie/'+ newsID+'?api_key=54106cb9e32f32a2f6c166158a3062d4&language=en-US&page=1')
+      fetch('https://api.themoviedb.org/3/movie/'+ newsID+'?api_key=0a81e077e4c0f82efa0825b92e9ecee6&language=en-US&page=1')
       .then(response => response.json())
       .then(data => {
         console.log(data);
         this.articleContent = data.overview;
-        this.articleImage = data[0].poster_path;
+        this.articleImage = data.poster_path;
       })
     }
   },
@@ -43,5 +44,11 @@ export default {
   padding-top: 60px;
   padding-bottom: 60px;
   text-align: left;
+}
+
+.single-article__image{
+  float: right;
+  width: 200px;
+  height: 200px;
 }
 </style>

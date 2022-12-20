@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <router-link to="/">Home</router-link>
+    <div class="first-page">
+    <router-link to="/"><h3>Home</h3></router-link>
+    <router-link to="/movies"><h3>Movies</h3></router-link>
+  </div>
     <router-view/>
+
   </div>
 </template>
 
@@ -10,8 +14,16 @@
   padding: 30px;
   padding-top:40px
 }
-
-
+.first-page{
+   display: flex;
+    justify-content: center;
+}
+ h3{
+    padding-right: 15px;
+    font-weight: 700;
+    font-size: 25px;
+    color: #485fc7;
+  }
 nav a {
   font-weight: bold;
   color: #2c3e50;

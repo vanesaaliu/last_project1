@@ -10,12 +10,17 @@
     <div class="media">
       <div class="media-content">
         <p class="title is-4">{{cardTitle}}</p>
+        <time datetime="2016-1-1">{{cardDate}}</time>
       </div>
     </div>
 
     <div class="content">
       <div v-html="cardContent"></div>
-      <time datetime="2016-1-1">{{cardDate}}</time>
+      
+    </div>
+    <div class="rating">
+      <p class="title is-6">Rating: {{cardRating}}</p>
+      
     </div>
   </div>
 </router-link>
@@ -30,7 +35,8 @@ export default {
     cardContent: String,
     cardImage: String,
     cardDate: String,
-    cardID: Number
+    cardID: Number,
+    cardRating:Number
   }
 }
 </script>
