@@ -3,18 +3,18 @@
     <div class="container">
       
       <div class="single-article__image">
-        <img :src="'https://image.tmdb.org/t/p/original'+articleImage" :alt="articleImage">
+        <img :src="'https://image.tmdb.org/t/p/original'+movieImage" :alt="movieImage">
       <div class="column is-7" style="padding-bottom: 128px;font-size: 18px;">
-      <div class="movie-title"><p class="title is-1 is-spaced">{{ articleTitle }}</p></div>
+      <div class="movie-title"><p class="title is-1 is-spaced">{{ movieTitle }}</p></div>
       <div class="single-article__content content">
-        <div > {{ articleContent }}</div>
+        <div > {{ movieContent }}</div>
       </div>
       <div class="year-rating">
       <div class="viti">
-        <div> Release Year: {{ articleDate }}</div>
+        <div> Release Year: {{ movieDate }}</div>
       </div>
       <div class="rating">
-        <div>Rating: {{ articleRating }}</div>
+        <div>Rating: {{ movieRating }}</div>
     
     </div>
   </div>
@@ -30,28 +30,28 @@ export default {
   name: 'SingleNews',
   data() {
     return {
-      articleContent: '',
-      articleImage: '',
-      articleRating:'',
-      articleTitle:''
+      movieContent: '',
+      movieImage: '',
+      movieRating:'',
+      movieTitle:''
     }
   },
   methods: {
-    fetchSingleNews(newsID) {
-      fetch('https://api.themoviedb.org/3/movie/'+ newsID+'?api_key=0a81e077e4c0f82efa0825b92e9ecee6&language=en-US&page=1')
+    fetchSingleMovie(movieID) {
+      fetch('https://api.themoviedb.org/3/movie/'+ movieID+'?api_key=0a81e077e4c0f82efa0825b92e9ecee6&language=en-US&page=1')
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        this.articleContent = data.overview;
-        this.articleImage = data.poster_path;
-        this.articleRating=data.vote_average;
-        this.articleDate=data.release_date;
-        this.articleTitle=data.title;
+        this.movieContent = data.overview;
+        this.movieImage = data.poster_path;
+        this.movieRating=data.vote_average;
+        this.movieDate=data.release_date;
+        this.movieTitle=data.title;
       })
     }
   },
   mounted() {
-    this.fetchSingleNews(this.$route.params.id);
+    this.fetchSingleMovie(this.$route.params.id);
   }
 }
 </script>
@@ -63,6 +63,8 @@ export default {
   text-align: left;
 
 }
+.title.is-1 {
+  color: white;}
 
 .column{
   display: flex;
@@ -70,6 +72,10 @@ export default {
   justify-content: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
+  color: white;
+}
+h3{
+  color: white;
 }
 .single-article__image{
   display: flex;
@@ -94,7 +100,8 @@ img {
 }
 @media(max-width:767px){
   .title.is-1 {
-    font-size: 38px;
+    font-size: 26px;
+    padding-top: 56px;
 }
   .year-rating{
   display: flex;

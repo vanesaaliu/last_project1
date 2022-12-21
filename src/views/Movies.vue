@@ -2,21 +2,22 @@
     <div id="app">
       <div class="container">
         <div class="movie-filters">
-        <div class="year-filter"><h3 class="year-content">Year</h3><input type="text" v-model="year" class="input is-focused" placeholder="Search by year"></div>
-        <div class="rating-filter"><h3>Rating</h3><input type="text" v-model="rating" class="input is-focused"></div>
-        <button class="button is-link is-outlined" @click="fetchNews()">Search</button>
+        <div class="year-filter"><h3 class="year-content">Year</h3><input type="text" v-model="year" class="input is-primary"></div>
+        <div class="rating-filter"><h3>Rating</h3><input type="text" v-model="rating" class="input is-primary"></div>
+    
+        <button class="button is-info is-inverted" @click="fetchMovie()">Search</button>
         </div>
         <div class="card-list">
-          <CardItem v-for="news in newsList.results" :key="news.id"
-            :cardTitle="news.title"
-            :cardContent="news.overview"
-            :cardImage="news.poster_path"
-            :cardDate="news.release_date"
-            :cardID="news.id"
-            :cardRating="news.vote_average"
-          >
-          </CardItem>
-        </div>
+        <CardItem v-for="movie in movieList.results" :key="movie.id"
+          :movieTitle="movie.title"
+          :movieContent="movie.overview"
+          :movieImage="movie.poster_path"
+          :movieDate="movie.release_date"
+          :movieID="movie.id"
+          :movieRating="movie.vote_average"
+        >
+        </CardItem>
+      </div>
       </div>
     </div>
   </template>
@@ -31,18 +32,18 @@
     },
     data() {
       return {
-        newsList: [],
+       movieList: [],
         year:" ",
         rating:""
       }
     },
     methods : {
-      fetchNews() {
+      fetchMovie() {
         fetch('https://api.themoviedb.org/3/discover/movie?api_key=0a81e077e4c0f82efa0825b92e9ecee6&language=en-US&primary_release_year='+this.year+'&vote_average.gte='+this.rating+'&vote_average.lte='+this.rating+'&sort_by=vote_average.desc&page=1')
         .then(response => response.json())
         .then(data => {
-          this.newsList = data;
-          console.log(this.newsList);
+          this.movieList = data;
+          console.log(this.movieList);
         })
       }
     },
@@ -72,7 +73,7 @@
   }
     .card-list {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 30px;
       padding-top: 60px;
       padding-bottom: 60px;
@@ -113,10 +114,10 @@
     padding-top: 60px;
     padding-bottom: 60px;
   }}
-  @media(min-width: 768px)and(max-width: 1024px){
+  @media (min-width: 768px) and (max-width: 1024px){
     .card-list {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
     gap: 30px;
     padding: 30px;
   }}

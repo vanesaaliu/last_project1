@@ -2,13 +2,13 @@
   <div id="app">
     <div class="container">
       <div class="card-list">
-        <CardItem v-for="news in newsList.results" :key="news.id"
-          :cardTitle="news.title"
-          :cardContent="news.overview"
-          :cardImage="news.poster_path"
-          :cardDate="news.release_date"
-          :cardID="news.id"
-          :cardRating="news.vote_average"
+        <CardItem v-for="movie in movieList.results" :key="movie.id"
+          :movieTitle="movie.title"
+          :movieContent="movie.overview"
+          :movieImage="movie.poster_path"
+          :movieDate="movie.release_date"
+          :movieID="movie.id"
+          :movieRating="movie.vote_average"
         >
         </CardItem>
       </div>
@@ -26,28 +26,29 @@ export default {
   },
   data() {
     return {
-      newsList: []
+      movieList: []
     }
   },
   methods : {
-    fetchNews() {
+    
+    fetchMovie() {
       fetch('https://api.themoviedb.org/3/movie/popular?api_key=0a81e077e4c0f82efa0825b92e9ecee6&language=en-US&page=1')
       .then(response => response.json())
       .then(data => {
-        this.newsList = data;
-        console.log(this.newsList);
+        this.movieList = data;
+        console.log(this.movieList);
       })
     }
   },
   mounted() {
-    this.fetchNews();
+    this.fetchMovie();
   }
 }
 </script>
 
 <style scoped>
 body {
-	background: #7bcdea;
+	background: #63a6be;
 	
 }
   .card-list {
@@ -71,7 +72,7 @@ body {
     padding-bottom: 60px;
   }
 }
-@media(min-width: 768px)and(max-width: 1024px){
+@media (min-width: 768px) and (max-width: 1024px){
     .card-list {
     display: grid;
     grid-template-columns: repeat(2,1fr);
