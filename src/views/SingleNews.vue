@@ -1,22 +1,25 @@
 <template>
   <article class="single-article">
     <div class="container">
-      <div class="single-Movie"></div>
+      
       <div class="single-article__image">
         <img :src="'https://image.tmdb.org/t/p/original'+articleImage" :alt="articleImage">
-      </div>
-      <div class="single-movie">
+      <div class="column is-7" style="padding-bottom: 128px;font-size: 18px;">
+      <div class="movie-title"><p class="title is-1 is-spaced">{{ articleTitle }}</p></div>
       <div class="single-article__content content">
         <div > {{ articleContent }}</div>
       </div>
+      <div class="year-rating">
       <div class="viti">
         <div> Release Year: {{ articleDate }}</div>
       </div>
       <div class="rating">
         <div>Rating: {{ articleRating }}</div>
-      </div>
+    
     </div>
-      
+  </div>
+      </div>
+  </div>
     </div>
   </article>
 
@@ -29,7 +32,8 @@ export default {
     return {
       articleContent: '',
       articleImage: '',
-      articleRating:''
+      articleRating:'',
+      articleTitle:''
     }
   },
   methods: {
@@ -42,6 +46,7 @@ export default {
         this.articleImage = data.poster_path;
         this.articleRating=data.vote_average;
         this.articleDate=data.release_date;
+        this.articleTitle=data.title;
       })
     }
   },
@@ -56,26 +61,66 @@ export default {
   padding-top: 60px;
   padding-bottom: 60px;
   text-align: left;
+
 }
+
 .column{
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
- 
 }
 .single-article__image{
   display: flex;
   justify-content: space-around;
   
 }
-.rateLogo{
-  width: 15px;
-  height: 15px;
+.content{
+  font-size: 25px;
+}
+
+.year-rating{
+  display: flex;
+  flex-direction: column;
+
 }
 img {
-    width: 60%;
+    width: 40%;
     height: 20%;
-  }
+}
+.title.is-1{
+  padding-bottom: 33px;
+}
+@media(max-width:767px){
+  .title.is-1 {
+    font-size: 38px;
+}
+  .year-rating{
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+}
+img{
+    width: 51%;
+    height: 14%;
+    padding-top: 82px;
+    }
+    .content{
+  font-size: 25px;
+}
+    .single-article__content{
+      
+  font-size: 15px;
+}
+.single-article {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}}
 </style>

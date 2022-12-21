@@ -2,7 +2,7 @@
     <div id="app">
       <div class="container">
         <div class="movie-filters">
-        <div class="year-filter"><h3>Year</h3><input type="text" v-model="year" class="input is-focused" placeholder="Search by year"></div>
+        <div class="year-filter"><h3 class="year-content">Year</h3><input type="text" v-model="year" class="input is-focused" placeholder="Search by year"></div>
         <div class="rating-filter"><h3>Rating</h3><input type="text" v-model="rating" class="input is-focused"></div>
         <button class="button is-link is-outlined" @click="fetchNews()">Search</button>
         </div>
@@ -54,6 +54,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
   }
   .year-filter {
     display: flex;
@@ -67,7 +68,7 @@
     padding-right: 15px;
     font-weight: 700;
     font-size: 25px;
-    color: #485fc7;
+    color: white;
   }
     .card-list {
       display: grid;
@@ -79,5 +80,45 @@
     img {
       object-fit:  cover !important;
     }
+    
+
+    @media(max-width:767px){
+      .movie-filters{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+     }
+     .single-article__image {
+      padding-bottom: 32px;
+     }
+    .year-content{
+      padding-right: 41px;
+     }
+     .year-filter {
+    display: flex;
+    margin-right: 30px;
+    margin-bottom: 20px;
+  }
+  .rating-filter{
+    
+    margin-bottom: 20px;
+  }
+  
+    .card-list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }}
+  @media(min-width: 768px)and(max-width: 1024px){
+    .card-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 30px;
+  }}
   </style>
   

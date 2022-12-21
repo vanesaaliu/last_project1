@@ -46,6 +46,10 @@ export default {
 </script>
 
 <style scoped>
+body {
+	background: #7bcdea;
+	
+}
   .card-list {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -57,4 +61,25 @@ export default {
   img {
     object-fit:  cover !important;
   }
+
+  @media(max-width:767px){
+    .card-list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 30px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+@media(min-width: 768px)and(max-width: 1024px){
+    .card-list {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 30px;
+    padding: 30px;
+  }
+  img {
+    width: 48%;
+    height: 20%;
+}}
 </style>

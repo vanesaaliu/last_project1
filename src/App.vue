@@ -10,6 +10,9 @@
 </template>
 
 <style>
+html{
+  background: #7bcdea;
+}
 #app {
   padding: 30px;
   padding-top:40px

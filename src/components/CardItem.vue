@@ -15,7 +15,7 @@
     </div>
 
     <div class="content">
-      <div v-html="cardContent"></div>
+      <div><p class="content-paragraph">{{ cardContent }}</p></div>
       
     </div>
     <div class="rating">
@@ -43,5 +43,25 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.content-paragraph{
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  font-size: 16px;
+}
+
+@media(max-width:767px){
+  
+  .card-content{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+@media(min-width: 768px)and(max-width: 1024px){
+
+}
+}
 
 </style>
